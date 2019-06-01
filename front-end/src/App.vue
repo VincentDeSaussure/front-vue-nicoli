@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>Nicoli</span>
+        <span class="font-weight-light"> Charlotte</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -16,18 +16,21 @@
     </v-toolbar>
 
     <v-content>
-      <FormulaireDuSeum/>
+      <router-link tag="li" to="/formulaire-du-seum">
+        <a>Formulaire du Seum</a>
+      </router-link>
+      <router-link tag="li" to="/cv">
+        <a>CV</a>
+      </router-link>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import FormulaireDuSeum from './components/FormulaireDuSeum'
-
 export default {
   name: 'App',
   components: {
-    FormulaireDuSeum
   },
   data () {
     return {
