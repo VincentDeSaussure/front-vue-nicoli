@@ -22,19 +22,27 @@
       <router-link tag="li" to="/cv">
         <a>CV</a>
       </router-link>
+        <li>
+          <a :href="URL.nouvelleCollection" target="_blank">nouvelle collection</a>
+        </li>
+        <li>
+          <a :href="URL.espacePotentielDeVie" target="_blank">espace potentiel de vie</a>
+        </li>
       <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import URL from "./models/urlDeRedirection"
+
 export default {
   name: 'App',
   components: {
   },
   data () {
     return {
-      //
+      URL
     }
   }
 }
