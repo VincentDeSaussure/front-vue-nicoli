@@ -30,6 +30,9 @@ export default {
   props: {
     msg: String
   },
+  created() {
+    this.$store.dispatch("FETCH_SEUMS")
+  },
   data: () => {
     return {
       newEntree: ""
