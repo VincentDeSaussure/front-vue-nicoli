@@ -49,10 +49,9 @@ export default {
   methods: {
     addEntreeToFormulaireDuSeum(newEntree) {
       const item = {
-        msg: newEntree,
-        value: false
+        nom: newEntree
       }
-      return this.$store.state.formulaireDuSeum.push(item);
+      return this.$store.actions.push(item);
     }
   }
 }
