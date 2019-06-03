@@ -1,7 +1,7 @@
 <template>
   <div id ="formulaire-du-seum">
     <v-container fluid v-if="hasFormulaireDuSeum">
-      <v-checkbox v-for="(entree, index) in formulaireDuSeum" :key="entree.msg + index" v-model="entree.value" :label="entree.msg"></v-checkbox>
+      <v-checkbox v-for="(entree, index) in formulaireDuSeum" :key="entree.nom + index" v-model="entree.value" :label="entree.nom"></v-checkbox>
     </v-container>
     <v-container>
       <v-layout>
@@ -31,7 +31,7 @@ export default {
     msg: String
   },
   created() {
-    this.$store.dispatch("FETCH_SEUMS")
+    this.$store.dispatch("fetchSeums")
   },
   data: () => {
     return {

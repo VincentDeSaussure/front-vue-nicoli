@@ -1,16 +1,10 @@
-import axios from 'axios'
+import { httpService } from "./http-service";
 
-class FormulaireDuSeumService {
+export const formulaireDuSeumService = {
 
-    fetchSeums() {
-        const urlApi = "http://localhost:1337/seums";
-
-        axios.get(urlApi).then(response => {
-            this.seums = response.data
-        }).catch()
+    fetchListeDeSeum() {
+        const seumPath = `http://localhost:1337/seums`;
+        return httpService.get({ path: seumPath });
     }
 
 }
-
-export default new FormulaireDuSeumService()
-
