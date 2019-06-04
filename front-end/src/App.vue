@@ -6,39 +6,32 @@
         <span class="font-weight-light"> Charlotte</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+      <router-link tag="li" to="/cv">
+        <v-img src="assets/img/icone_cv.svg" aspect-ratio="1"></v-img>
+      </router-link>
+      <router-link tag="li" to="/work">
+        <v-img></v-img>
+      </router-link>
+      <li>
+        <a :href="URL.espacePotentielDeVie" target="_blank">espace potentiel de vie</a>
+      </li>
     </v-toolbar>
 
     <v-content>
-      <router-link tag="li" to="/formulaire-du-seum">
-        <a>Formulaire du Seum</a>
-      </router-link>
-      <router-link tag="li" to="/cv">
-        <a>CV</a>
-      </router-link>
-        <li>
-          <a :href="URL.nouvelleCollection" target="_blank">nouvelle collection</a>
-        </li>
-        <li>
-          <a :href="URL.espacePotentielDeVie" target="_blank">espace potentiel de vie</a>
-        </li>
-      <router-view></router-view>
+      <formulaire-du-seum></formulaire-du-seum>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import URL from "./models/urlDeRedirection"
+import FormulaireDuSeum from "./components/FormulaireDuSeum"
+
 
 export default {
   name: 'App',
   components: {
+    FormulaireDuSeum
   },
   data () {
     return {

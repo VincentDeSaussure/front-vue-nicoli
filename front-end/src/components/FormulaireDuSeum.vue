@@ -1,25 +1,14 @@
 <template>
   <div id ="formulaire-du-seum">
     <v-container fluid v-if="hasFormulaireDuSeum">
-      <v-checkbox v-for="(entree, index) in formulaireDuSeum" :key="entree.nom + index" v-model="entree.value" :label="entree.nom"></v-checkbox>
-    </v-container>
-    <v-container>
-      <v-layout>
-        <v-flex
-                xs12
-                md4
-        >
-          <v-text-field
-                  v-model="newEntree"
-                  label="ajouter votre seum personnel"
-          ></v-text-field>
-          <v-btn
-                  color="success"
-                  @click="addEntreeToFormulaireDuSeum(newEntree)"
-          >Valider
-          </v-btn>
-        </v-flex>
-      </v-layout>
+      <v-checkbox v-for="(entree, index) in formulaireDuSeum"
+                  :key="entree.nom + index"
+                  v-model="entree.value"
+                  :label="entree.nom">
+      </v-checkbox>
+      <v-btn color="success">
+        Envoyer
+      </v-btn>
     </v-container>
   </div>
 </template>
