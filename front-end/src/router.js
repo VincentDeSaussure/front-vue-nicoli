@@ -7,7 +7,8 @@ import Work from "./components/Work"
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/formulaire-du-seum', component: FormulaireDuSeum },
+
+    { path: '/', component: FormulaireDuSeum },
     { path: '/cv', component: CV },
     { path: '/work', component: Work }
 ]

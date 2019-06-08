@@ -1,14 +1,16 @@
 <template>
   <div id ="formulaire-du-seum">
     <v-container fluid v-if="hasFormulaireDuSeum">
+      <v-form>
       <v-checkbox v-for="(entree, index) in formulaireDuSeum"
                   :key="entree.nom + index"
                   v-model="entree.value"
                   :label="entree.nom">
       </v-checkbox>
-      <v-btn color="success">
+      <v-btn color="success" @submit="submitFormulaireDuSeum" @click="submitFormulaireDuSeum">
         Envoyer
       </v-btn>
+      </v-form>
     </v-container>
   </div>
 </template>
@@ -41,6 +43,10 @@ export default {
         nom: newEntree
       }
       return this.$store.actions.push(item);
+    },
+    submitFormulaireDuSeum() {
+      console.log(this.formulaireDuSeum)
+      return;
     }
   }
 }

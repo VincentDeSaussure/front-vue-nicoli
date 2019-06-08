@@ -4,36 +4,33 @@
       <header>
           <v-layout row wrap>
 
-            <v-flex xs12>
+            <v-flex xs6>
+              <router-link tag="a" to="/">
+
               <h1>
                 Charlotte Nicoli
               </h1>
-              <v-img :src="IMAGE.CN" aspect-ratio="1" height="20vh" position="center top" contain></v-img>
+              <v-img :src="IMAGE.CN" aspect-ratio="1" :height="imageHeight" position="center top" contain></v-img>
+              </router-link>
             </v-flex>
 
-            <v-container>
-              <v-flex xs12 id="menu">
-                <ul>
-                  <v-layout align-start justify-center row fill-height>
-                    <v-flex xs4>
-                      <li>
-                        <v-img :src="IMAGE.CV" :height="imageHeight" contain></v-img>
-                      </li>
-                    </v-flex>
-                    <v-flex xs4>
-                      <li>
-                        <v-img :src="IMAGE.WORK" :height="imageHeight" contain></v-img>
-                      </li>
-                    </v-flex>
-                    <v-flex xs4>
-                      <li>
-                        <v-img :src="IMAGE.CONTACT" :height="imageHeight" contain></v-img>
-                      </li>
-                    </v-flex>
-                  </v-layout>
-                </ul>
-              </v-flex>
-            </v-container>
+            <v-flex xs2>
+              <router-link tag="a" to="/cv">
+              <v-img :src="IMAGE.CV" :height="imageHeight" contain></v-img>
+              </router-link>
+            </v-flex>
+
+            <v-flex xs2>
+              <router-link tag="a" to="/work">
+              <v-img :src="IMAGE.WORK" :height="imageHeight" contain></v-img>
+              </router-link>
+            </v-flex>
+
+            <v-flex xs2>
+              <router-link tag="a" to="/contact">
+              <v-img :src="IMAGE.CONTACT" :height="imageHeight" contain></v-img>
+              </router-link>
+            </v-flex>
 
           </v-layout>
 
@@ -41,7 +38,7 @@
     </div>
 
     <v-content>
-      <formulaire-du-seum></formulaire-du-seum>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
@@ -70,9 +67,6 @@ export default {
   h1{
     opacity: 0;
     background: lightblue;
-  }
-  #menu{
-    margin-top: -10vh;
   }
   ul {
     list-style-type: none;
