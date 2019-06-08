@@ -2,21 +2,41 @@
   <v-app>
     <div>
       <header>
-        <h1>
-          Charlotte Nicoli
-        </h1>
-        <v-img :src="IMAGE.CN" aspect-ratio="16:9" height="25vh"></v-img>
-        <ul>
-          <li>
-            <v-img :src="IMAGE.CV" aspect-ratio="1" height="200"></v-img>
-          </li>
-          <li>
-            <v-img :src="IMAGE.WORK" aspect-ratio="1" height="200"></v-img>
-          </li>
-          <li>
-            <v-img :src="IMAGE.CONTACT" aspect-ratio="1" height="200"></v-img>
-          </li>
-        </ul>
+          <v-layout row wrap>
+
+            <v-flex xs12>
+              <h1>
+                Charlotte Nicoli
+              </h1>
+              <v-img :src="IMAGE.CN" aspect-ratio="1" height="20vh" position="center top" contain></v-img>
+            </v-flex>
+
+            <v-container>
+              <v-flex xs12 id="menu">
+                <ul>
+                  <v-layout align-start justify-center row fill-height>
+                    <v-flex xs4>
+                      <li>
+                        <v-img :src="IMAGE.CV" :height="imageHeight" contain></v-img>
+                      </li>
+                    </v-flex>
+                    <v-flex xs4>
+                      <li>
+                        <v-img :src="IMAGE.WORK" :height="imageHeight" contain></v-img>
+                      </li>
+                    </v-flex>
+                    <v-flex xs4>
+                      <li>
+                        <v-img :src="IMAGE.CONTACT" :height="imageHeight" contain></v-img>
+                      </li>
+                    </v-flex>
+                  </v-layout>
+                </ul>
+              </v-flex>
+            </v-container>
+
+          </v-layout>
+
       </header>
     </div>
 
@@ -40,30 +60,24 @@ export default {
   data () {
     return {
       URL,
-      IMAGE
+      IMAGE,
+      imageHeight: "20vh"
     }
   }
 }
 </script>
 <style>
   h1{
-    color: transparent;
-    height: 5px;
+    opacity: 0;
+    background: lightblue;
+  }
+  #menu{
+    margin-top: -10vh;
   }
   ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    width: 100px;
-    margin: 0 0px;
     list-style-type: none;
   }
   a {
     color: #42b983;
-  }
-  img{
-    padding: 10px;
   }
 </style>
