@@ -5,15 +5,15 @@
       {{ title }}
     </v-subheader>
 
-    <div v-for="(item, index) in derouleLaListe" :key="item.date + index">
+    <div v-for="(item, index) in listeDItem" :key="'boucle' + index">
       <v-list-tile>
 
-        <v-list-tile-content :key="item.date + index">
-          {{ item.date }}
+        <v-list-tile-content :key="'date' + index">
+          <v-list-tile-sub-title v-html="supprimeLesDoublonsPourLeSoustitre(index, item.date)" text-sm-left></v-list-tile-sub-title>
         </v-list-tile-content>
 
-        <v-list-tile-content  :key="item.date + index">
-          <v-list-tile-title>{{ item.description }}</v-list-tile-title>
+        <v-list-tile-content  :key="'description' + index">
+          <v-list-tile-title v-html="item.description" text-sm-left></v-list-tile-title>
         </v-list-tile-content>
 
       </v-list-tile>
@@ -25,10 +25,21 @@
 export default {
   name: 'listeDuCv',
   props: [ 'listeDItem', 'title'],
-  computed: {
-    derouleLaListe() {
-        return this.listeDItem
+  methods: {
+    supprimeLesDoublonsPourLeSoustitre(index, subtitle) {
+      if (index !== 0) {
+        if (this.listeDItem[index-1].date == subtitle) {
+          return ""
+        }
+      }
+      return subtitle
     }
   }
 }
 </script>
+
+<style>
+  .v-list__tile{
+    font-size: 14px;
+  }
+</style>

@@ -2,7 +2,7 @@
   <div id ="cv">
     <v-container fluid>
       <section v-for="(section, index) in CV" :key="'entete' + index">
-        <liste-du-cv :title="index" :listDItem="section"></liste-du-cv>
+        <liste-du-cv :title="index" :liste-d-item="section"></liste-du-cv>
         <v-divider></v-divider>
       </section>
     </v-container>
