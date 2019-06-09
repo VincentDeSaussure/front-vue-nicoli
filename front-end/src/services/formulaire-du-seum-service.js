@@ -8,10 +8,10 @@ export const formulaireDuSeumService = {
     },
 
     submitFormulaireDuSeum(formulaireSeumSubmitted) {
-        const formulaireSeumReponsePath = `http://localhost:1337/reponse`
+        const formulaireSeumResponsePath = `http://localhost:1337/reponse`
         return httpService.post(
             {
-                path: formulaireSeumReponsePath,
+                path: formulaireSeumResponsePath,
                 params: formulaireSeumSubmitted
             }
         ).then().catch()

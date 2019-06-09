@@ -51,9 +51,6 @@ import FormulaireDuSeum from "./components/FormulaireDuSeum"
 
 export default {
   name: 'App',
-  components: {
-    FormulaireDuSeum
-  },
   data () {
     return {
       URL,
