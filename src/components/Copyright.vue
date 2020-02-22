@@ -1,10 +1,11 @@
 <template>
     <div>
-        Copyrigth
+        {{ text }}
     </div>
 </template>
 <script>
 export default {
-    name: "Copyrigth"
+    name: "Copyrigth",
+    props: ["text"]
 }
 </script>
