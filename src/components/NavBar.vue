@@ -1,0 +1,33 @@
+<template>
+    <div class="navbar">
+        <div class="navbar-brand">
+            <h1>Charlotte Nicoli</h1>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <router-link :to="{name: 'home'}">BACK</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        name: 'navBar'
+    }
+</script>
+<style>
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid red;
+}
+.navbar .navbar-brand{
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 3rem;
+}
+.navbar .navbar-end{
+    padding: 3rem;
+    margin-top: 1rem;
+}
+</style>

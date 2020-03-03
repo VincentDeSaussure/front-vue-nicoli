@@ -1,18 +1,16 @@
 <template>
-    <div>
-        <projet-title :title="title"></projet-title>
-        <br>
-        <bloc-text :id="blocTextId"></bloc-text>
-        <br>
-        <bloc-texte-anglais :id="blocTexteAnglaisId"></bloc-texte-anglais>
-        <br>
-        <bloc-image :composition="composition" :images="images"></bloc-image>
-        <br>
-        <copyrigth :text="copyright"></copyrigth>
+    <div class="container">
+        <div class="description-content">
+            <bloc-text class="bloc-texte" :id="blocTextId"></bloc-text>
+            <bloc-texte-anglais class="bloc-texte" :id="blocTexteAnglaisId"></bloc-texte-anglais>
+        </div>
+        <div class="composition-content">
+            <bloc-image :composition="composition" :images="images"></bloc-image>
+            <copyrigth :text="copyright"></copyrigth>
+        </div>
     </div>
 </template>
 <script>
-import ProjetTitle from "../components/ProjetTitle.vue"
 import BlocText from "../components/BlocText.vue"
 import BlocImage from "../components/BlocImage";
 import Copyrigth from "../components/Copyright";
@@ -23,7 +21,6 @@ export default {
         BlocTexteAnglais,
         Copyrigth,
         BlocImage,
-        ProjetTitle,
         BlocText,
     },
     data:() => {
@@ -57,3 +54,20 @@ export default {
     }
 }
 </script>
+<style>
+.container{
+    padding: 0 3rem;
+    display: flex;
+}
+.container .description-content{
+    flex: 3;
+    border: 1px solid blue;
+}
+.container .composition-content{
+    flex: 9;
+    border: 1px solid red;
+}
+.bloc-texte{
+    margin-bottom: 1rem;
+}
+</style>
