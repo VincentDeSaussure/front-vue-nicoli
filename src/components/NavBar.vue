@@ -11,9 +11,9 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'navBar'
-    }
+export default {
+    name: 'navBar'
+}
 </script>
 <style>
 .navbar{
@@ -24,10 +24,8 @@
 .navbar .navbar-brand{
     font-size: 2rem;
     font-weight: bold;
-    padding: 3rem;
 }
 .navbar .navbar-end{
-    padding: 3rem;
     margin-top: 1rem;
 }
 </style>

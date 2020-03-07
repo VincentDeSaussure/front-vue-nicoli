@@ -56,7 +56,6 @@ export default {
 </script>
 <style>
 .container{
-    padding: 0 3rem;
     display: flex;
 }
 .container .description-content{

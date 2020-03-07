@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import NotFound from './views/NotFound.vue'
 import Home from './views/Home'
 import Projet from './views/Projet'
+import Biographie from "./views/Biographie";
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/biographie',
+      name: 'biographie',
+      component: Biographie
     },
     {
       path: '/projet/:uid',

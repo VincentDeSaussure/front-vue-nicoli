@@ -1,9 +1,11 @@
 <template>
   <div>
+    <div>
+      <router-link :to="{name: 'biographie'}">BIO + CONTACT</router-link>
+    </div>
     <div class="card" v-for="card in cartes">
       <router-link :to="{ name: 'projet', params: { uid: card.lien_vers_la_page.uid }}">
         <prismic-image :field="card.carteimage"/>
-        <!--<img src="card.carteimage.url"/>-->
       </router-link>
     </div>
   </div>
@@ -14,16 +16,16 @@ export default {
   name: 'Home',
   data: () => {
     return {
-      cartes: []
+      cartes: [],
+      levels: 0
     }
   },
   methods: {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
-          this.cartes = document.data.carte;
-          console.log(document.data.carte[0].carteimage.url)
-        })
+          this.cartes = document.data.carte
+      });
     }
   },
   created () {
@@ -32,7 +34,10 @@ export default {
 }
 </script>
 <style>
-  .card{
-    margin: 20px
+  .cards-list{
+    display: flex;
   }
+.card{
+  margin: 20px
+}
 </style>

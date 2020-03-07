@@ -16,4 +16,8 @@ export default {
 <style>
 @import "./assets/css/resetr.css";
 @import "./assets/css/prismic-edit-button.css";
+  html{
+    font-size: 14px;
+    padding: 4rem;
+  }
 </style>
