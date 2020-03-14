@@ -1,29 +1,36 @@
 <template>
     <div>
         Bloc texte anglais component
-        <div>
-            {{ title }}
-        </div>
     </div>
 </template>
 <script>
 export default {
     name: "BlocTexteAnglais",
-    props: ["id"],
+    props: ["uid"],
     data:() => {
         return {
+            year: null,
+            dimension: null,
+            description: null,
+            materials: null,
+            subtitle: null,
             title: null
         }
     },
     methods: {
         getContent() {
-            return this.$prismic.client.getByID(this.id).then((document) => {
-                this.title = document.data.title[0].text;
+            return this.$prismic.client.getByUID("bloc-texte-anglais", this.uid).then((document) => {
+                this.year = document.data.year;
+                this.dimension = document.data.dimension;
+                this.description = document.data.description;
+                this.materials = document.data.materials;
+                this.subtitle = document.data.subtitle;
+                this.title = document.data.title;
             })
         }
     },
     watch: {
-        id() {
+        uid() {
             this.getContent()
         }
     }

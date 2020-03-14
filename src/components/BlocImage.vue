@@ -2,7 +2,7 @@
     <div>
         Bloc image component type : {{ composition }}
         <div v-for="image in images">
-            <p>{{ image.image.url }}</p>
+            <prismic-image :field="image.image"></prismic-image>
         </div>
     </div>
 </template>

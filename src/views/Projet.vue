@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="description-content">
-            <bloc-text class="bloc-texte" :id="blocTextId"></bloc-text>
-            <bloc-texte-anglais class="bloc-texte" :id="blocTexteAnglaisId"></bloc-texte-anglais>
+            <bloc-text class="bloc-texte" :uid="blocTextUid"></bloc-text>
+            <bloc-texte-anglais class="bloc-texte" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
         </div>
         <div class="composition-content">
             <bloc-image :composition="composition" :images="images"></bloc-image>
@@ -25,9 +25,8 @@ export default {
     },
     data:() => {
         return {
-            title: null,
-            blocTextId: null,
-            blocTexteAnglaisId: null,
+            blocTextUid: null,
+            blocTexteAnglaisUid: null,
             composition: null,
             images: [],
             copyright: null
@@ -36,9 +35,9 @@ export default {
     methods: {
         getContent(uid) {
             this.$prismic.client.getByUID("page", uid).then((document) => {
-                this.title = document.data.projet[0].text;
-                this.blocTextId = document.data.bloc_text.id;
-                this.blocTexteAnglaisId = document.data.bloc_texte_anglais.id;
+                this.blocTextUid = document.data.bloc_text.uid;
+                console.log(document.data);
+                this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;
                 this.composition = document.data["composition-visuelle"];
                 this.images = document.data["bloc-image"];
                 this.copyright = document.data.copyright[0].text;
