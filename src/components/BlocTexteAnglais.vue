@@ -1,6 +1,15 @@
 <template>
-    <div>
-        Bloc texte anglais component
+    <div class="lang-en">
+        <h3>{{ title }}
+            <span v-if="subtitle !== null"> /</span>
+        </h3>
+        <h4>
+            <span v-if="subtitle !== null">{{ subtitle }}, </span>
+            {{ year }}
+        </h4>
+        <p>{{ dimension }}</p>
+        <p>{{ description }}</p>
+        <p>{{ materials }}</p>
     </div>
 </template>
 <script>
@@ -20,12 +29,12 @@ export default {
     methods: {
         getContent() {
             return this.$prismic.client.getByUID("bloc-texte-anglais", this.uid).then((document) => {
-                this.year = document.data.year;
-                this.dimension = document.data.dimension;
-                this.description = document.data.description;
-                this.materials = document.data.materials;
-                this.subtitle = document.data.subtitle;
-                this.title = document.data.title;
+                this.year = document.data.year[0].text;
+                this.dimension = document.data.dimension[0].text;
+                this.description = document.data.description[0].text;
+                this.materials = document.data.materials[0].text;
+                this.title = document.data.title[0].text.toUpperCase();
+                this.subtitle = document.data.subtitle.length === 1 ? document.data.subtitle[0].text : null;
             })
         }
     },
@@ -36,3 +45,8 @@ export default {
     }
 }
 </script>
+<style>
+.lang-en{
+    font-style: italic;
+}
+</style>

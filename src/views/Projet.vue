@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="description-content">
-            <bloc-text class="bloc-texte" :uid="blocTextUid"></bloc-text>
-            <bloc-texte-anglais class="bloc-texte" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
+            <bloc-text class="bloc" :uid="blocTextUid"></bloc-text>
+            <bloc-texte-anglais class="bloc" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
         </div>
         <div class="composition-content">
             <bloc-image :composition="composition" :images="images"></bloc-image>
@@ -36,7 +36,6 @@ export default {
         getContent(uid) {
             this.$prismic.client.getByUID("page", uid).then((document) => {
                 this.blocTextUid = document.data.bloc_text.uid;
-                console.log(document.data);
                 this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;
                 this.composition = document.data["composition-visuelle"];
                 this.images = document.data["bloc-image"];
@@ -59,13 +58,11 @@ export default {
 }
 .container .description-content{
     flex: 3;
-    border: 1px solid blue;
 }
 .container .composition-content{
     flex: 9;
-    border: 1px solid red;
 }
-.bloc-texte{
-    margin-bottom: 1rem;
+.bloc{
+    margin-bottom: 2rem;
 }
 </style>

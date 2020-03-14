@@ -19,7 +19,7 @@ export default {
 .navbar{
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid red;
+    height: 130px;
 }
 .navbar .navbar-brand{
     font-size: 2rem;

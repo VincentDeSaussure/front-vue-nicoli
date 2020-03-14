@@ -34,9 +34,6 @@ export default {
 }
 </script>
 <style>
-  .cards-list{
-    display: flex;
-  }
 .card{
   margin: 20px
 }
