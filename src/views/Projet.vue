@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-        <div class="description-content">
+    <div class="columns is-8 is-variable">
+        <div class="column is-one-quarter">
             <bloc-text class="bloc" :uid="blocTextUid"></bloc-text>
             <bloc-texte-anglais class="bloc" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
         </div>
-        <div class="composition-content">
+        <div class="column is-three-quarters">
             <bloc-image :composition="composition" :images="images"></bloc-image>
             <copyrigth :text="copyright"></copyrigth>
         </div>
@@ -53,16 +53,8 @@ export default {
 }
 </script>
 <style>
-.container{
-    display: flex;
-}
-.container .description-content{
-    flex: 3;
-}
-.container .composition-content{
-    flex: 9;
-}
-.bloc{
-    margin-bottom: 2rem;
-}
+    .bloc{
+        margin-bottom: 2rem;
+        max-width: 300px;
+    }
 </style>
