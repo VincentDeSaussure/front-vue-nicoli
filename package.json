@@ -2,12 +2,11 @@
   "name": "prismic-vuejs-starter",
   "version": "1.2.0",
   "description": "Vue.js starter project with content managed in Prismic",
-  "license": "Apache-2.0",
-  "repository": "github:prismicio/vuejs-starter",
   "author": "Prismic",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "bulma": "^0.8.0",
@@ -18,8 +17,14 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "babel-core": "7.0.0-bridge.0",
+    "@babel/core": "7.0.0",
     "@vue/cli-plugin-babel": "^3.0.0-rc.5",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
     "@vue/cli-service": "^3.0.0-rc.5",
+    "@vue/test-utils": "1.0.0-beta.31",
     "vue-template-compiler": "^2.5.16"
-  }
+  },
+  "license": "Apache-2.0",
+  "repository": "github:prismicio/vuejs-starter"
 }
