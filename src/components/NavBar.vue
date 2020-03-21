@@ -21,7 +21,7 @@ export default {
     justify-content: space-between;
     height: 130px;
 }
-.navbar .navbar-brand{
+.navbar .navbar-brand h1{
     font-size: 2rem;
     font-weight: bold;
 }
