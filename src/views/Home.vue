@@ -27,6 +27,7 @@ export default {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
+          console.log(document.data.carte)
           this.cartes = document.data.carte;
 
       });

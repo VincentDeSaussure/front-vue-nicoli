@@ -18,6 +18,7 @@ import CompositionTypeOne from "../components/compositions/CompositionsTypeOne";
 import CompositionTypeTwo from "../components/compositions/CompositionsTypeTwo";
 import CompositionTypeThree from "../components/compositions/CompositionsTypeThree";
 import CompositionsTypeDefault from "../components/compositions/CompositionsTypeDefault";
+import CompositionTypeFour from "../components/compositions/CompositionTypeFour";
 import { typeDeCompositions } from "../models/type-de-compositions";
 
 export default {
@@ -29,6 +30,7 @@ export default {
         CompositionTypeOne,
         CompositionTypeTwo,
         CompositionTypeThree,
+        CompositionTypeFour,
         CompositionsTypeDefault
     },
     data:() => {
@@ -53,12 +55,17 @@ export default {
                 {
                     type: typeDeCompositions.GROUPE_3,
                     component: CompositionTypeThree
+                },
+                {
+                    type: typeDeCompositions.GROUPE_4,
+                    component: CompositionTypeFour
                 }
             ]
         }
     },
     methods: {
         getContent(uid) {
+            console.log(uid);
             this.$prismic.client.getByUID("page", uid).then((document) => {
                 this.blocTextUid = document.data.bloc_text.uid;
                 this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;
