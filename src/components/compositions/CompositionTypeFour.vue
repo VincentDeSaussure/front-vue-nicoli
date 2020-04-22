@@ -1,18 +1,18 @@
 <template>
     <div>
-        <div class="columns is-variable is-2">
-            <div>
+        <div class="columns is-variable">
+            <div class="column is-half">
                 <prismic-image :field="image1"></prismic-image>
             </div>
-            <div>
+            <div class="column is-one-quarter">
                 <prismic-image :field="image2"></prismic-image>
             </div>
         </div>
-        <div class="columns is-variable is-2">
-            <div>
+        <div class="columns is-variable">
+            <div class="column is-one-quarter">
                 <prismic-image :field="image3"></prismic-image>
             </div>
-            <div>
+            <div class="column is-half">
                 <prismic-image :field="image4"></prismic-image>
             </div>
         </div>
