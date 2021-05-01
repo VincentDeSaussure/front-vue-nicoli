@@ -5,7 +5,7 @@
             <bloc-texte-anglais class="bloc" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
         </div>
         <div class="column is-three-quarters">
-            <component :is="composition.component" v-bind:uid="compositionUid"></component>
+            <composition :groupeType="compositionType" :uid="compositionUid"></composition>
             <copyrigth :text="copyright"></copyrigth>
         </div>
     </div>
@@ -14,12 +14,7 @@
 import BlocText from "../components/BlocText.vue";
 import Copyrigth from "../components/Copyright";
 import BlocTexteAnglais from "../components/BlocTexteAnglais";
-import CompositionTypeOne from "../components/compositions/CompositionsTypeOne";
-import CompositionTypeTwo from "../components/compositions/CompositionsTypeTwo";
-import CompositionTypeThree from "../components/compositions/CompositionsTypeThree";
-import CompositionsTypeDefault from "../components/compositions/CompositionsTypeDefault";
-import CompositionTypeFour from "../components/compositions/CompositionTypeFour";
-import { typeDeCompositions } from "../models/type-de-compositions";
+import Composition from "../components/Composition";
 
 export default {
     name: "Projet",
@@ -27,40 +22,15 @@ export default {
         BlocTexteAnglais,
         Copyrigth,
         BlocText,
-        CompositionTypeOne,
-        CompositionTypeTwo,
-        CompositionTypeThree,
-        CompositionTypeFour,
-        CompositionsTypeDefault
+        Composition
     },
     data:() => {
         return {
             blocTextUid: null,
             blocTexteAnglaisUid: null,
-            composition: {
-                type: null,
-                component: CompositionsTypeDefault
-            },
             compositionUid: null,
+            compositionType: null,
             copyright: null,
-            typeDeCompositions: [
-                {
-                    type: typeDeCompositions.GROUPE_1,
-                    component: CompositionTypeOne
-                },
-                {
-                    type: typeDeCompositions.GROUPE_2,
-                    component: CompositionTypeTwo
-                },
-                {
-                    type: typeDeCompositions.GROUPE_3,
-                    component: CompositionTypeThree
-                },
-                {
-                    type: typeDeCompositions.GROUPE_4,
-                    component: CompositionTypeFour
-                }
-            ]
         }
     },
     methods: {
@@ -69,7 +39,7 @@ export default {
             this.$prismic.client.getByUID("page", uid).then((document) => {
                 this.blocTextUid = document.data.bloc_text.uid;
                 this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;
-                this.composition = this.typeDeCompositions.find(el => el.type === document.data.composition.type);
+                this.compositionType = document.data.composition.type;
                 this.compositionUid = document.data.composition.uid;
                 this.copyright = document.data.copyright[0].text;
             });
