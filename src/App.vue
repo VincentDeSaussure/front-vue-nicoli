@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
+    <brand/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import NavBar from "./components/NavBar";
+import Brand from "./components/Brand";
 import "bulma/css/bulma.css";
 export default {
   name: 'App',
-  components: {NavBar}
+  components: {Brand}
 }
 </script>
 
@@ -19,7 +19,7 @@ export default {
 
 html{
   font-size: 14px;
-  padding: 4rem;
+  padding: 0rem 4rem;
 }
 
 html *{

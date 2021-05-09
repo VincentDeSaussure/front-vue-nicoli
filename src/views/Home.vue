@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      <router-link :to="{name: 'biographie'}">BIO + CONTACT</router-link>
-    </div>
+    <nav-home></nav-home>
     <div class="columns" v-for="column in columns">
       <div class="column is-one-quarter" v-for="card in column">
         <router-link :to="{ name: 'projet', params: { uid: card.lien_vers_la_page.uid }}">
@@ -15,9 +13,11 @@
 
 <script>
 import {rangDImage} from "../models/rangDImage";
+import NavHome from '@/components/nav/NavHome'
 
 export default {
   name: 'Home',
+  components: {NavHome},
   data: () => {
     return {
       cartes: []
@@ -27,7 +27,6 @@ export default {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
-          console.log(document.data.carte)
           this.cartes = document.data.carte;
 
       });
