@@ -3,8 +3,8 @@
     <div>
       <router-link :to="{name: 'biographie'}">BIO + CONTACT</router-link>
     </div>
-    <div class="columns" v-for="columns in columnss">
-      <div class="column is-one-quarter" v-for="card in columns">
+    <div class="columns" v-for="column in columns">
+      <div class="column is-one-quarter" v-for="card in column">
         <router-link :to="{ name: 'projet', params: { uid: card.lien_vers_la_page.uid }}">
           <prismic-image :field="card.carteimage"/>
         </router-link>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {columnsConstructor} from "../models/columnsConstructor";
+import {rangDImage} from "../models/rangDImage";
 
 export default {
   name: 'Home',
@@ -34,8 +34,8 @@ export default {
     }
   },
   computed: {
-    columnss() {
-      return columnsConstructor.ofFourCards(this.cartes);
+    columns() {
+      return rangDImage.de(4)(this.cartes);
     }
   },
   created () {

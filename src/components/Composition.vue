@@ -39,6 +39,6 @@ section{
   flex-wrap: wrap;
 }
 section img{
-  margin: 5px;
+  margin: 2px 4px;
 }
 </style>
