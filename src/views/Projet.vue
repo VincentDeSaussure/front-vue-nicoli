@@ -40,7 +40,6 @@ export default {
     },
     methods: {
         getContent(uid) {
-            console.log(uid);
             this.$prismic.client.getByUID("page", uid).then((document) => {
                 this.blocTextUid = document.data.bloc_text.uid;
                 this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;

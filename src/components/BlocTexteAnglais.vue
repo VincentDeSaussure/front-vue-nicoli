@@ -1,10 +1,10 @@
 <template>
     <div class="lang-en">
         <h3>{{ title }}
-            <span v-if="subtitle !== null"> /</span>
+            <span v-if="subtitle !== ''"> /</span>
         </h3>
         <h4>
-            <span v-if="subtitle !== null">{{ subtitle }}, </span>
+            <span v-if="subtitle !== ''">{{ subtitle }}, </span>
             {{ year }}
         </h4>
         <p>{{ dimension }}</p>
@@ -13,6 +13,8 @@
     </div>
 </template>
 <script>
+import {assureLesAttributs} from '@/models/assureLesAttributsPrismic'
+
 export default {
     name: "BlocTexteAnglais",
     props: ["uid"],
@@ -27,15 +29,14 @@ export default {
         }
     },
     methods: {
-        getContent() {
-            return this.$prismic.client.getByUID("bloc-texte-anglais", this.uid).then((document) => {
-                this.year = document.data.year[0].text;
-                this.dimension = document.data.dimension[0].text;
-                this.description = document.data.description[0].text;
-                this.materials = document.data.materials[0].text;
-                this.title = document.data.title[0].text.toUpperCase();
-                this.subtitle = document.data.subtitle.length === 1 ? document.data.subtitle[0].text : null;
-            })
+        async getContent() {
+            const { data } = await this.$prismic.client.getByUID("bloc-texte-anglais", this.uid)
+            this.year = assureLesAttributs(data.year);
+            this.dimension = assureLesAttributs(data.dimension);
+            this.description = assureLesAttributs(data.description);
+            this.materials = assureLesAttributs(data.materials);
+            this.title = assureLesAttributs(data.title).toUpperCase();
+            this.subtitle = assureLesAttributs(data.subtitle)
         }
     },
     watch: {
