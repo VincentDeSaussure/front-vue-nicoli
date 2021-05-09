@@ -4,16 +4,17 @@
             <span v-if="subtitle !== ''"> /</span>
         </h3>
         <h4>
-            <span v-if="subtitle !== ''">{{ subtitle }}, </span>
+            <span v-if="hasSubtitle && !hasHyperlink">{{ subtitle }}, </span>
+            <span v-else-if="hasSubtitle && hasHyperlink"><a :href="subtitleHyperlink" target="_blank">{{ subtitle }}</a></span>
             {{ year }}
         </h4>
+        <p class="bold">{{ materials }}</p>
         <p>{{ dimension }}</p>
         <p>{{ description }}</p>
-        <p>{{ materials }}</p>
     </div>
 </template>
 <script>
-import {assureLesAttributs} from '@/models/assureLesAttributsPrismic'
+import {assureLAttribut} from '@/models/assureLesAttributsPrismic'
 
 export default {
     name: "BlocTexteAnglais",
@@ -24,20 +25,30 @@ export default {
             dimension: null,
             description: null,
             materials: null,
-            subtitle: null,
+            subtitle: '',
+            subtitleHyperlink: '',
             title: null
         }
     },
     methods: {
         async getContent() {
             const { data } = await this.$prismic.client.getByUID("bloc-texte-anglais", this.uid)
-            this.year = assureLesAttributs(data.year);
-            this.dimension = assureLesAttributs(data.dimension);
-            this.description = assureLesAttributs(data.description);
-            this.materials = assureLesAttributs(data.materials);
-            this.title = assureLesAttributs(data.title).toUpperCase();
-            this.subtitle = assureLesAttributs(data.subtitle)
+            this.year = assureLAttribut(data.year);
+            this.dimension = assureLAttribut(data.dimension);
+            this.description = assureLAttribut(data.description);
+            this.materials = assureLAttribut(data.materials);
+            this.title = assureLAttribut(data.title).toUpperCase();
+            this.subtitle = assureLAttribut(data.subtitle)
+            this.subtitleHyperlink = assureLAttribut(data["subtitle-hyperlink"]);
         }
+    },
+    computed: {
+      hasSubtitle() {
+        return this.sousTitre !== ''
+      },
+      hasHyperlink() {
+        return this.sousTitreHyperlien !== ''
+      }
     },
     watch: {
         uid() {
@@ -49,5 +60,8 @@ export default {
 <style>
 .lang-en{
     font-style: italic;
+}
+.bold{
+  font-weight: bolder;
 }
 </style>

@@ -1,6 +1,8 @@
-export function assureLesAttributs(prismicData) {
+export function assureLAttribut(prismicData) {
   if (prismicData.length > 1) {
     return prismicData.map(e => e.text).join(', ')
   }
-  return prismicData.length ? prismicData[0].text : ''
+  if(prismicData.length) return prismicData[0].text
+  if (prismicData.link_type === 'Web') return prismicData.url
+  return ''
 }
