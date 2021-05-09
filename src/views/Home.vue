@@ -14,6 +14,8 @@
 <script>
 import {rangDImage} from "../models/rangDImage";
 import NavHome from '@/components/nav/NavHome'
+import {trie} from '@/models/trie'
+
 
 export default {
   name: 'Home',
@@ -34,7 +36,9 @@ export default {
   },
   computed: {
     columns() {
-      return rangDImage.de(4)(this.cartes);
+      return rangDImage.de(4)(
+          this.cartes.sort(trie.chronologiqueDécroissante)
+      );
     }
   },
   created () {
