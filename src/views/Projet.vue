@@ -1,16 +1,16 @@
 <template>
   <div>
     <nav-projet></nav-projet>
-    <div class="columns is-8 is-variable">
-      <div class="column is-one-quarter">
+    <main>
+      <section>
         <bloc-text class="bloc" :uid="blocTextUid"></bloc-text>
         <bloc-texte-anglais class="bloc" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
-      </div>
-      <div class="column is-three-quarters">
+      </section>
+      <section>
         <composition :groupeType="compositionType" :uid="compositionUid"></composition>
         <copyrigth :text="copyright"></copyrigth>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
 </template>
 <script>
@@ -58,7 +58,12 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 150px;
+}
 .bloc{
     margin-bottom: 2rem;
     max-width: 300px;
