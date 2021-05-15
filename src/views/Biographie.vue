@@ -3,15 +3,20 @@
     <nav-projet></nav-projet>
     <main>
       <section>
-        <h1>{{ this.contact }}</h1>
+        <h2>{{ this.contact }}</h2>
       </section>
       <section>
-        <h1>CV</h1>
-        <ol>
-          <li v-for="section in sections">
-            <p><span>{{ section.titre }}</span></p>
-          </li>
-        </ol>
+        <article v-for="section in sections">
+          <h2>{{ section.titre }}</h2>
+          <ol>
+            <li v-for="ligne in section.lignes">
+              <time>{{ ligne.année }}</time>
+              <div>
+                <p v-for="description in ligne.descriptions">{{ description }}</p>
+              </div>
+            </li>
+          </ol>
+        </article>
       </section>
     </main>
   </div>
@@ -47,3 +52,24 @@ export default {
   }
 }
 </script>
+<style scoped>
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 150px;
+}
+h2 {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+h3 {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 30px;
+}
+</style>
