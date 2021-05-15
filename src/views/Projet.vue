@@ -64,8 +64,14 @@ main {
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 150px;
 }
+@media only screen and (max-width: 600px) {
+  main {
+    display: block;
+  }
+}
 .bloc{
     margin-bottom: 2rem;
+    min-width: 300px;
     max-width: 300px;
 }
 </style>

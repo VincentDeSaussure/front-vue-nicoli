@@ -4,9 +4,9 @@ function récupèreLIndex(key) {
 
 function grouperParAnnée(tableauObjets){
   return tableauObjets.reduce(function (acc, obj) {
-    var année = obj['annee'] ? obj['annee'].match(/^(\d\d\d\d)-\d\d-\d\d$/)[1] : null
+    var année = obj['annee'] ? obj.annee.match(/^(\d\d\d\d)-\d\d-\d\d$/)[1] : null
     if(!acc.some(ligne => ligne.année === année)){
-      acc.push(new Ligne(année))
+      acc.push(new Ligne(année, obj.annee))
     }
     const ligne = acc.find(ligne => ligne.année === année).ajouteDescription(obj.description[0].text)
     return acc;
@@ -18,7 +18,8 @@ const Lignes = {
 }
 
 class Ligne {
-  constructor(année) {
+  constructor(année, datetime) {
+    this.datetime = datetime
     this.année = année
     this.descriptions = []
   }
@@ -41,8 +42,6 @@ export function prepareCVFrom(data) {
     if (key.match(/^titre_section/)) {
       const indexDeLaSection = récupèreLIndex(key)
       sections.push(new Section(data[key][0].text, data[`ligne_section_${indexDeLaSection}`]))
-      delete data[key]
-      delete data[`ligne_section_${indexDeLaSection}`]
     }
   })
   return sections
