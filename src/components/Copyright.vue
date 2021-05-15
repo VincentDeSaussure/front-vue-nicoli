@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <p>
         {{ text }}
-    </div>
+    </p>
 </template>
 <script>
 export default {
@@ -9,3 +9,8 @@ export default {
     props: ["text"]
 }
 </script>
+<style scoped>
+p{
+  min-width: 300px;
+}
+</style>

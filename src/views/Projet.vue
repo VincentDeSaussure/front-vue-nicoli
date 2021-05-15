@@ -51,10 +51,6 @@ export default {
     },
     created () {
         this.getContent(this.$route.params.uid);
-    },
-    beforeRouteUpdate (to, from, next) {
-        this.getContent(to.params.uid);
-        next();
     }
 }
 </script>
