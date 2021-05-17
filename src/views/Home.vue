@@ -1,21 +1,19 @@
 <template>
   <div>
     <nav-home></nav-home>
-    <div class="columns" v-for="column in columns">
-      <div class="column is-one-quarter" v-for="card in column">
-        <router-link :to="{ name: 'projet', params: { uid: card.lien_vers_la_page.uid }}">
-          <prismic-image :field="card.carteimage"/>
+    <main>
+      <div class="column" v-for="carte in cartes">
+        <router-link :to="{ name: 'projet', params: { uid: carte.lien_vers_la_page.uid }}">
+          <prismic-image :field="carte.carteimage"/>
         </router-link>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
 <script>
-import {rangDImage} from "../models/rangDImage";
 import NavHome from '@/components/nav/NavHome'
 import {trie} from '@/models/trie'
-
 
 export default {
   name: 'Home',
@@ -29,16 +27,9 @@ export default {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
-          this.cartes = document.data.carte;
+          this.cartes = document.data.carte.sort(trie.chronologiqueDécroissante);
 
       });
-    }
-  },
-  computed: {
-    columns() {
-      return rangDImage.de(4)(
-          this.cartes.sort(trie.chronologiqueDécroissante)
-      );
     }
   },
   created () {
@@ -46,3 +37,14 @@ export default {
   }
 }
 </script>
+
+<style>
+main{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px 10px;
+}
+main img {
+  width: 100%;
+}
+</style>

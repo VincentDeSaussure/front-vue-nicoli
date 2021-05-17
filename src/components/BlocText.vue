@@ -1,16 +1,14 @@
 <template>
     <div>
-        <h3>{{ titre }}
-            <span v-if="sousTitre !== ''"> /</span>
-        </h3>
-        <h4>
-            <span v-if="aSousTitre && !aHyperlien">{{ sousTitre }}, </span>
-            <span v-else-if="aSousTitre && aHyperlien"><a :href="sousTitreHyperlien" target="_blank">{{ sousTitre }}</a></span>
+        <h1>{{ titre }}</h1>
+        <h2>
+            <strong v-if="aSousTitre && !aHyperlien">{{ sousTitre }}, </strong>
+            <strong v-else-if="aSousTitre && aHyperlien" ><a :href="sousTitreHyperlien" target="_blank">{{ sousTitre }}</a></strong>
             {{ annee }}
-        </h4>
+        </h2>
         <p class="bold">{{ materiaux }}</p>
         <p>{{ dimensions }}</p>
-        <p>{{ description }}</p>
+        <h3>{{ description }}</h3>
     </div>
 </template>
 <script>
@@ -58,14 +56,14 @@ export default {
 }
 </script>
 <style>
-h3 {
+h1{
     font-weight: bold;
     font-size: 1.1rem;
 }
-h4 {
+h2 {
     font-weight: bold;
 }
 .bold{
-  font-weight: bolder;
+  font-weight: bold;
 }
 </style>

@@ -1,8 +1,7 @@
 <template>
     <div class="lang-en">
-        <h3>{{ title }}
-            <span v-if="subtitle !== ''"> /</span>
-        </h3>
+        <h1>{{ title }}
+        </h1>
         <h4>
             <span v-if="hasSubtitle && !hasHyperlink">{{ subtitle }}, </span>
             <span v-else-if="hasSubtitle && hasHyperlink"><a :href="subtitleHyperlink" target="_blank">{{ subtitle }}</a></span>

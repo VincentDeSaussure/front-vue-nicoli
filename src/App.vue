@@ -5,18 +5,18 @@
   </div>
 </template>
 
-<script>
-import Brand from "./components/Brand";
-import "bulma/css/bulma.css";
-export default {
-  name: 'App',
-  components: {Brand}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import Brand from './components/Brand.vue'
+
+@Component({components: {
+    Brand
+}})
+export default class App extends Vue {
 }
 </script>
 
 <style>
-@import "./assets/css/resetr.css";
-
 html{
   font-size: 14px;
   padding: 0rem 4rem;
