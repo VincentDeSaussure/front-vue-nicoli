@@ -25,4 +25,9 @@ html{
 html *{
   font-family: "proxima-nova", "SansSerif";
 }
+
+a{
+  color: black;
+  text-decoration: none;
+}
 </style>
