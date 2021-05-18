@@ -14,9 +14,9 @@
   </div>
 </template>
 <script>
-import BlocText from "../components/BlocText.vue";
+import BlocText from "../components/blocText/RecupereTexte.vue";
 import Copyrigth from "../components/Copyright";
-import BlocTexteAnglais from "../components/BlocTexteAnglais";
+import BlocTexteAnglais from "../components/blocText/RecupereTexteAnglais";
 import Composition from "../components/Composition";
 import NavProjet from '@/components/nav/NavProjet'
 
