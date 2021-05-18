@@ -1,8 +1,8 @@
 <template>
   <div>
     <nav-home></nav-home>
-    <main>
-      <div class="column" v-for="carte in cartes">
+    <main class="home-container">
+      <div v-for="carte in cartes">
         <router-link :to="{ name: 'projet', params: { uid: carte.lien_vers_la_page.uid }}">
           <prismic-image :field="carte.carteimage"/>
         </router-link>
@@ -27,7 +27,7 @@ export default {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
-          this.cartes = document.data.carte.sort(trie.chronologiqueDécroissante);
+          this.cartes = document.data.carte.sort(trie.chronologiqueDécroissant);
 
       });
     }
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-main{
+.home-container{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px 10px;

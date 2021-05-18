@@ -8,7 +8,7 @@ describe("trier par ", () => {
       const annees = [ { annee: annee2020 }, { annee: annee2021 }]
       const anneeTriées = [ { annee: annee2021 }, { annee: annee2020 }]
 
-      expect(annees.sort(trie.chronologiqueDécroissante)).toEqual(anneeTriées)
+      expect(annees.sort(trie.chronologiqueDécroissant)).toEqual(anneeTriées)
     })
   })
 })

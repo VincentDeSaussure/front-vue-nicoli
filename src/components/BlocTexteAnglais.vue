@@ -1,15 +1,14 @@
 <template>
     <div class="lang-en">
-        <h1>{{ title }}
-        </h1>
-        <h4>
+        <h1>{{ title }}</h1>
+        <h2>
             <span v-if="hasSubtitle && !hasHyperlink">{{ subtitle }}, </span>
             <span v-else-if="hasSubtitle && hasHyperlink"><a :href="subtitleHyperlink" target="_blank">{{ subtitle }}</a></span>
             {{ year }}
-        </h4>
+        </h2>
         <p class="bold">{{ materials }}</p>
         <p>{{ dimension }}</p>
-        <p>{{ description }}</p>
+        <h3>{{ description }}</h3>
     </div>
 </template>
 <script>
