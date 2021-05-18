@@ -13,6 +13,6 @@ export default {
 nav {
   display: flex;
   justify-content: flex-end;
-  padding: .5rem;
+  margin-bottom: .5rem;
 }
 </style>
