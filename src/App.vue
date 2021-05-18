@@ -23,11 +23,12 @@ html{
 }
 
 html *{
+  color: rgb(74, 74, 74);
   font-family: "proxima-nova", "SansSerif";
 }
 
 a{
-  color: black;
+  color: rgb(74, 74, 74);
   text-decoration: none;
 }
 </style>

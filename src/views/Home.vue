@@ -38,13 +38,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .home-container{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px 10px;
 }
-main img {
+main div img {
   width: 100%;
 }
 </style>
