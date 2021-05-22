@@ -11,7 +11,7 @@
           <h3>{{ section.titre }}</h3>
           <ol>
             <li v-for="ligne in section.lignes">
-              <time :datetime="ligne.datetime">{{ ligne.année }}</time>
+              <time :datetime="ligne.datetime">{{ ligne.annee }}</time>
               <div>
                 <p v-for="description in ligne.descriptions">{{ description }}</p>
               </div>
@@ -24,7 +24,7 @@
 </template>
 <script>
 import NavProjet from '@/components/nav/NavProjet'
-import {prepareCVFrom} from '@/models/prepareCVFromPrismicData'
+import {PrepareCV} from '@/models/prepareCV'
 
 export default {
   name: 'Biographie',
@@ -45,7 +45,7 @@ export default {
             this.contact = document.data.contact[0].text
             this.email = document.data.email[0].text
             this.bio = document.data.bio[0].text
-            this.sections = prepareCVFrom(document.data)
+            this.sections = PrepareCV.from(document.data)
           });
     }
   },

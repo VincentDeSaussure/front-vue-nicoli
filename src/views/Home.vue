@@ -27,7 +27,7 @@ export default {
     getContent () {
       this.$prismic.client.getSingle('home')
         .then((document) => {
-          this.cartes = document.data.carte.sort(trie.chronologiqueDécroissant);
+          this.cartes = document.data.carte.sort(trie.chronologiqueDécroissant('annee'));
 
       });
     }
