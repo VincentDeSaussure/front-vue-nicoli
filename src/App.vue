@@ -24,11 +24,15 @@ html{
 
 html *{
   color: rgb(74, 74, 74);
-  font-family: "proxima-nova", "SansSerif";
+  font-family: "proxima-nova", "SansSerif", serif;
 }
 
 a{
-  color: rgb(74, 74, 74);
   text-decoration: none;
+}
+p, h1, h2, h3, h4, h5, a{
+  color: rgb(74, 74, 74);
+  margin: 0;
+  line-height: 1.5rem;
 }
 </style>
