@@ -78,11 +78,21 @@ article{
   width: 100%;
   margin-bottom: 1rem;
 }
+ol{
+  list-style-type: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding-inline-start: 0;
+}
 li {
+  width: 100%;
   list-style: none;
   display: flex;
 }
 li time{
-  width: 100px;
+  width: 50px;
+}
+li div{
+  width: 80%;
 }
 </style>

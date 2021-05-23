@@ -44,6 +44,11 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px 10px;
 }
+@media only screen and (max-width: 600px) {
+  .home-container {
+    display: block;
+  }
+}
 main div img {
   width: 100%;
 }

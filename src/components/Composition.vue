@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <div class="composition">
     <div v-for="image in images">
       <prismic-image :field="image"></prismic-image>
     </div>
-  </section>
+  </div>
 </template>
 <script>
 import {imageNumberKeyFromPrismicDataToArray} from '@/models/imageNumberKeyFromPrismicDataToArray'
@@ -33,12 +33,20 @@ export default {
     }
 }
 </script>
-<style>
-section{
+<style scoped>
+.composition{
   display: flex;
   flex-wrap: wrap;
 }
-section img{
+.composition img{
   margin: 2px 4px;
+}
+@media only screen and (max-width: 1180px) {
+  .composition {
+    display: block;
+  }
+  .composition img{
+    width: 100%;
+  }
 }
 </style>
