@@ -7,7 +7,7 @@
         <bloc-texte-anglais class="bloc" :uid="blocTexteAnglaisUid"></bloc-texte-anglais>
       </section>
       <section>
-        <composition :groupeType="compositionType" :uid="compositionUid"></composition>
+        <composition v-if="compositionType" :groupeType="compositionType" :uid="compositionUid"></composition>
         <copyrigth :text="copyright"></copyrigth>
       </section>
     </main>
@@ -39,14 +39,13 @@ export default {
         }
     },
     methods: {
-        getContent(uid) {
-            this.$prismic.client.getByUID("page", uid).then((document) => {
-                this.blocTextUid = document.data.bloc_text.uid;
-                this.blocTexteAnglaisUid = document.data.bloc_texte_anglais.uid;
-                this.compositionType = document.data.composition.type;
-                this.compositionUid = document.data.composition.uid;
-                this.copyright = document.data.copyright[0].text;
-            });
+        async getContent(uid) {
+            const { data } = await this.$prismic.client.getByUID("page", uid)
+            this.blocTextUid = data.bloc_text.uid;
+            this.blocTexteAnglaisUid = data.bloc_texte_anglais.uid;
+            this.compositionType = data.composition.type;
+            this.compositionUid = data.composition.uid;
+            this.copyright = data.copyright[0].text;
         }
     },
     created () {

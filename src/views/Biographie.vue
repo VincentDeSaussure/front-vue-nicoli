@@ -11,10 +11,20 @@
           <h3>{{ section.titre }}</h3>
           <ol>
             <li v-for="ligne in section.lignes">
-              <time :datetime="ligne.datetime">{{ ligne.annee }}</time>
-              <div>
-                <p v-for="description in ligne.descriptions">{{ description }}</p>
+
+              <div v-if="ligne.annee" class="ligne-avec-annee">
+                <time :datetime="ligne.datetime">{{ ligne.annee }}</time>
+                <div>
+                  <p v-for="description in ligne.descriptions">{{ description }}</p>
+                </div>
               </div>
+
+              <div v-else>
+                <div>
+                  <p class="padding-1">{{ ligne.description }}</p>
+                </div>
+              </div>
+
             </li>
           </ol>
         </article>
@@ -93,6 +103,16 @@ li time{
   width: 50px;
 }
 li div{
-  width: 80%;
+  width: 95%;
+  max-width: 600px;
+}
+.padding-1{
+  padding-left: 50px;
+}
+p{
+  margin-bottom: 0.4rem;
+}
+.ligne-avec-annee{
+  display: flex;
 }
 </style>

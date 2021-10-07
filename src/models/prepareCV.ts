@@ -10,7 +10,7 @@ const contient = (acc: Ligne[]) => (annee: string) =>{
 }
 
 function grouperParAnnee(tableauObjets: LigneData[]){
-  const LignesVide: Ligne[] = []
+  const lignes: Ligne[] = []
   return tableauObjets.reduce(function (acc, obj) {
     // @ts-ignore
     var annee = obj.annee?.match(/^(\d\d\d\d)-\d\d-\d\d$/)[1]
@@ -18,13 +18,27 @@ function grouperParAnnee(tableauObjets: LigneData[]){
       // @ts-ignore
       acc.push(new Ligne(annee, obj.annee))
     }
-    const ligne = acc.find((ligne: Ligne) => ligne.annee === annee)?.ajouteDescription(obj.description[0].text)
+    acc.find((ligne: Ligne) => ligne.annee === annee)?.ajouteDescription(obj.description[0].text)
     return acc;
-  }, LignesVide);
+  }, lignes);
 }
 
+const grouperSansAnnee = (ligneDatas: LigneData[]) => {
+  const lignes: Ligne[] = []
+  return ligneDatas.reduce(function (acc, obj) {
+    // @ts-ignore
+    var annee = obj.annee?.match(/^(\d\d\d\d)-\d\d-\d\d$/)[1]
+    if (annee && !contient(acc)(annee)) {
+      // @ts-ignore
+      acc.push(new Ligne(annee, obj.annee))
+    }
+    acc.find((ligne: Ligne) => ligne.annee === annee)?.ajouteDescription(obj.description[0].text)
+    return acc;
+  }, lignes);
+}
 const Lignes = {
-  grouperParAnnee
+  grouperParAnnee,
+  grouperSansAnnee,
 }
 
 class Ligne {
@@ -48,10 +62,18 @@ interface LigneData {
   description: Text[]
 }
 
+interface LigneSansDate {
+  description: string
+}
+
 class Section {
-  public readonly lignes: Ligne[]
+  public readonly lignes: Ligne[] | LigneSansDate[]
   constructor(public readonly titre: string, lignes: LigneData[]) {
-    this.lignes = Lignes.grouperParAnnee(lignes).sort(trie.chronologiqueDécroissant('datetime'))
+    if (titre === 'Presse') {
+      this.lignes = lignes.map(ligne => ({ description: ligne.description[0].text }))
+    } else {
+      this.lignes = Lignes.grouperParAnnee(lignes).sort(trie.chronologiqueDécroissant('datetime'))
+    }
   }
 }
 

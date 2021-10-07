@@ -9,4 +9,10 @@
   font-weight: bold;
   padding: 3rem 0rem 1.5rem 0rem;
 }
+@media only screen and (max-width: 600px) {
+  .brand{
+    padding: 3rem 0rem 1.5rem 0rem;
+    text-align: center;
+  }
+}
 </style>

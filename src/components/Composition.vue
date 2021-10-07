@@ -20,10 +20,9 @@ export default {
         }
     },
     methods: {
-        getContent() {
-            return this.$prismic.client.getByUID(this.groupeType, this.uid).then(document => {
-                this.images = imageNumberKeyFromPrismicDataToArray(document.data);
-            })
+        async getContent() {
+          const { data } = await this.$prismic.client.getByUID(this.groupeType, this.uid)
+          this.images = imageNumberKeyFromPrismicDataToArray(data);
         }
     },
     watch: {
@@ -47,6 +46,7 @@ export default {
   }
   .composition img{
     width: 100%;
+    margin: 0;
   }
 }
 </style>
