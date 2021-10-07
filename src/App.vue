@@ -24,7 +24,7 @@ html{
 
 html *{
   color: rgb(74, 74, 74);
-  font-family: "proxima-nova", "SansSerif", serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a{
